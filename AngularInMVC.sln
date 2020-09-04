@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30404.54
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularInMVC", "AngularInMVC\AngularInMVC.csproj", "{0A61E4A2-9D2A-45A3-924E-A5745C95F918}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularInMVC", "AngularInMVC\AngularInMVC.csproj", "{0A61E4A2-9D2A-45A3-924E-A5745C95F918}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

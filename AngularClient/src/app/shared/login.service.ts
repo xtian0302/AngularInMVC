@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Account } from './account.model';
+import { Login } from './login.model';
 import{HttpClient} from '@angular/common/http'
-import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
-}) 
-export class AccountService {
-  formData: Account= { 
-    Email: null,
-    Password: null,
-    FirstName: null,
-    LastName: null
+})
+export class LoginService {
+
+  formData: Login= {  
+    Password: null,  
+    Email:null,
   };
   
   constructor(private http:HttpClient) { }
@@ -31,9 +29,5 @@ export class AccountService {
     this.http.get(this.rootUrl + '/PaymentDetail')
     .toPromise()
     .then(res => this.list = res as Account[]);
-  }
-  
-  getAll() {
-      return this.http.get<Account[]>(`${environment.apiUrl}/users`);
   }
 }

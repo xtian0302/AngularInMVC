@@ -1,17 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgModule } from '@angular/core';
-import{HttpClientModule} from '@angular/common/http'
+import{ HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
-import {ToastrModule } from 'ngx-toastr';
-import {AppComponent } from './app.component'; 
-import {AccountComponent} from './account/account.component';
-import {RegisterComponent} from './account/register/register.component';
-import {LoginComponent} from './account/login/login.component';
+import { ToastrModule } from 'ngx-toastr';
+import { AppComponent } from './app.component'; 
+import { AccountComponent} from './account/account.component';
+import { RegisterComponent} from './account/register/register.component';
+import { LoginComponent} from './account/login/login.component';
 import { AccountService } from './shared/account.service';
 import { AppRoutingModule } from './app-routing.module'; 
 import { RouterModule } from '@angular/router';
+import { LoginService } from './shared/login.service'; 
+import { JwtInterceptor  } from './_helpers/jwt.interceptor'; 
+import { ErrorInterceptor  } from './_helpers/error.interceptor'; 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +36,10 @@ import { RouterModule } from '@angular/router';
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
-  providers: [AccountService],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+              { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+              AccountService,
+              LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

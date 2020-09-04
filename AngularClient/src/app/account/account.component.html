@@ -1,10 +1,16 @@
-<h2>Accounts</h2>
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser else loggedout">
+  <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="/">Home</a>
+      <a class="nav-item nav-link" (click)="logout()">Logout</a>
+  </div>
+</nav>   
 
-<nav>
-  <ul>
-    <li><a routerLink="/login">Login</a></li>
-    <li><a routerLink="/register">Register</a></li>
-  </ul>
-</nav>
-
-<router-outlet></router-outlet>
+  <nav class="navbar navbar-expand navbar-dark bg-dark" #loggedout>
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+        <a class="nav-item nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+    </div>
+    </nav>
+  <div class="container">
+      <router-outlet></router-outlet>
+  </div>
