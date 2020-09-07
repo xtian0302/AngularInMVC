@@ -1,16 +1,25 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser else loggedout">
-  <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/">Home</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark pb-0 pt-0 m-0" *ngIf="currentUser else loggedOut">
+  <a class="navbar-brand" href="#">
+    <img src="https://angular.io/assets/images/logos/angular/angular.svg" class="pb-1" alt="Girl in a jacket" width="35" height="35">
+    Angular Client
+  </a>
+  <div class="navbar-nav ml-auto"> 
       <a class="nav-item nav-link" (click)="logout()">Logout</a>
   </div>
 </nav>   
 
-  <nav class="navbar navbar-expand navbar-dark bg-dark" #loggedout>
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/home" routerLinkActive="active">Home</a>
-        <a class="nav-item nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+  <ng-template #loggedOut>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark pb-0 pt-0 m-0">
+      <a class="navbar-brand" href="#">
+        <img src="https://angular.io/assets/images/logos/angular/angular.svg" class="pb-1" alt="Girl in a jacket" width="35" height="35">
+        Angular Client
+      </a>
+      <div class="navbar-nav ml-auto">  
+          <a class="nav-item nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+          <a class="nav-item nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+      </div>
+      </nav>
+    <div class="container">
+        <router-outlet></router-outlet>
     </div>
-    </nav>
-  <div class="container">
-      <router-outlet></router-outlet>
-  </div>
+  </ng-template>

@@ -10,29 +10,26 @@ export class AccountService {
   formData: Account= { 
     Email: null,
     Password: null,
+    Password2: null,
     FirstName: null,
     LastName: null
   };
   
-  constructor(private http:HttpClient) { }
-  readonly rootUrl = 'http://localhost:50091/api';
+  constructor(private http:HttpClient) { } 
   list : Account[];
  
-  postPaymentDetail(formData:Account){ 
-    return this.http.post(this.rootUrl+'/PaymentDetail',formData);
-  } 
-  // putPaymentDetail(formData:Account){ 
-  //   return this.http.put(this.rootUrl+'/PaymentDetail/'+formData);
-  // }  
+  postRegistration(formData:Account){  
+    return this.http.post(`${environment.apiUrl}/api/accounts`, formData);
+  }  
   deletePaymentDetail(id:number){ 
-    return this.http.delete(this.rootUrl+'/PaymentDetail/'+id);
+    return this.http.delete(`${environment.apiUrl}/api/auth/login`+id);
   } 
   refreshList(){
-    this.http.get(this.rootUrl + '/PaymentDetail')
+    this.http.get(`${environment.apiUrl}/api/auth/login`)
     .toPromise()
     .then(res => this.list = res as Account[]);
   }
-  
+
   getAll() {
       return this.http.get<Account[]>(`${environment.apiUrl}/users`);
   }

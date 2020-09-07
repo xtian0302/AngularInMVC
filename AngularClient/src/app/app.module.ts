@@ -23,7 +23,7 @@ import { ErrorInterceptor  } from './_helpers/error.interceptor';
     RegisterComponent,
     LoginComponent
   ],
-  imports: [
+  imports: [ 
     BrowserModule,
     AppRoutingModule,
     FormsModule, 

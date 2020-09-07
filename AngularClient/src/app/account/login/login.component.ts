@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router,
+    private router: Router,private toastr:ToastrService,
     private authenticationService: AuthenticationService) { // redirect to home if already logged in
       if (this.authenticationService.currentUserValue)
           this.router.navigate(['/']);
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         password: ['', Validators.required]
     });// get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-
+ 
   }
    
     // convenience getter for easy access to form fields
@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit {
         .subscribe(
             data => {
                 this.router.navigate([this.returnUrl]);
+                this.toastr.success("Login Successfull!")
             },
             error => {
                 this.error = error;

@@ -46,7 +46,7 @@ namespace AngularInMVC.Controllers
             await _appDbContext.Customers.AddAsync(new Customer { IdentityId = userIdentity.Id, Location = model.Location });
             await _appDbContext.SaveChangesAsync();
 
-            return new OkObjectResult("Account created");
+            return new CreatedResult("Post",null);
         }
     }
 }

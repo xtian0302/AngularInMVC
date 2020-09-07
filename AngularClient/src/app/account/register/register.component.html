@@ -1,1 +1,71 @@
-<p>register works!</p>
+<br> 
+<div class="col-8 offset-md-3 ">
+    <div class="card" style="max-width: 100%;">
+        <h4 class="card-header">
+            User Registration
+        </h4>
+        <div class="card-body">
+            <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+                <div class="form-group">
+                    <div class="form-row">
+                    <div class="col"> 
+                        <input name="FirstName" #FirstName="ngModel" [(ngModel)]="service.formData.FirstName"
+                            type="text" class="form-control" placeholder="First Name" required>
+                    </div> 
+ 
+                    <div class="col"> 
+                        <input name="LastName" #LastName="ngModel" [(ngModel)]="service.formData.LastName" type="text"
+                            class="form-control" placeholder="Last Name" required>
+                    </div>
+                </div>
+                </div>
+                <div class="form-group"> 
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text bg-white">
+                                    <i class="fa fa-envelope" [class.green-icon]="Email.valid"
+                                        [class.red-icon]="Email.invalid && Email.touched"></i>
+                                </div>
+                            </div>
+                            <input name="Email" #Email="ngModel" [(ngModel)]="service.formData.Email" type="email"
+                                class="form-control" placeholder="Email Address" required>
+                        </div>  
+                    </div> 
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col"> 
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text bg-white">
+                                            <i class="fas fa-key" [class.green-icon]="Password.valid"
+                                                [class.red-icon]="Password.invalid && Password.touched"></i>
+                                        </div>
+                                    </div>
+                                    <input name="Password"  #Password="ngModel" [(ngModel)]="service.formData.Password"
+                                        type="password"class="form-control" placeholder="Password"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="col"> 
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text bg-white">
+                                            <i class="fas fa-key" [class.green-icon]="ConfirmPassword.valid"
+                                                [class.red-icon]="ConfirmPassword.invalid && ConfirmPassword.touched"></i>
+                                        </div>
+                                    </div>
+                                    <input name="ConfirmPassword" #ConfirmPassword="ngModel" [(ngModel)]="service.formData.Password2"
+                                        type="password" class="form-control" placeholder="Confirm Password" pattern="{{ Password.value }}"
+                                        required>
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+                <div class="form-group">
+                    <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">
+                        <i class="fas fa-database"></i> Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
